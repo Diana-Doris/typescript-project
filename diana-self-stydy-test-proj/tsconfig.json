@@ -1,0 +1,20 @@
+{
+  // 配置的是编译选项的默认值
+  "compilerOptions": {
+    // 编译ts--->js，使用什么样的版本标准  默认值 es3
+    "target": "ES2016",
+    // 配置编译目标使用的模块化标准  common js ｜｜ es
+    "module": "CommonJS",
+    // 默认情况下，ts全局使用的是哪个环境;但是这个选项里里面是没有node环境的，所以我们就安装第三方库。
+    // @types/nodes（@types：ts官方的类型库，很多对js的类型描述，对js代码也可以进行检查）
+    // jquery：用js写的，没有类型检查。 可以安装@types/jquery，为jquery库添加类型定义。
+    "lib": ["ES2016"],
+    "outDir": "./dist",
+    // 更加严格的空类型  null 和 undefined就不能赋值给其它类型了
+    "strictNullChecks": true
+  },
+  // tsc 回车之后，编译的文件路径
+  "include": ["./src"]
+  // tsc 回车之后，编译的文件名字
+  // "files":["./src/index.ts"]
+}
