@@ -1,11 +1,39 @@
+// import { sum, name } from './myMoudle'
+// console.log(name, sum(1, 2))
+
+// const myMoudle = require('./myMoudle')
+
+// import myMoudle from './myMoudle'
+
+import myMoudle = require('./myMoudle')
+console.log(myMoudle)
+
+// enum Perssion {
+//   Zero = 0,
+//   Read = 1, //   2^0  0001
+//   Write = 2, //  2^1  0010
+//   Create = 4, // 2^2  0100
+//   Delete = 8, // 2^3  1000
+//   // ...
+// }
+// // | 位运算 ：或运算
+// let p = Perssion.Read | Perssion.Write //(0001 | 0010) = 0011
+// p = p | Perssion.Delete //(0011 | 1000) = 1011
+
+// p = p ^ Perssion.Read //(1011 ^ 0001 = 1010)
+// // & 位运算：且运算  0010 且 0001 --- 0000
+// function hasPerssion(target: Perssion, per: Perssion) {
+//   // 1010 & 0001 = 0000
+//   return (target & per) === per
+// }
+
+// console.log(hasPerssion(p, Perssion.Zero))
 // let say: string = 'hello'
 // function test(num:number):number {
 //     return num
 // }
 // test(9)
 // console.log('80900')
-
-import { type } from "os";
 
 // let name: string | undefined ;
 // if (typeof name === 'string') {
@@ -61,8 +89,8 @@ import { type } from "os";
 // }
 /**
  * 得到a*b的结果
- * @param a 
- * @param b 
+ * @param a
+ * @param b
  */
 // function combinne(a: number, b: number): number
 // function combinne(a: string, b: string): string
@@ -77,17 +105,16 @@ import { type } from "os";
 // }
 // const result = combinne(2,5)
 
-function sum(a:number,b:number,c?:number) {
-    if (c) {
-       return a+b+c
-    }
-    else {
-        return a+b
-    }
-}
-sum(3, 4)
+// function sum(a: number, b: number, c?: number) {
+//   if (c) {
+//     return a + b + c
+//   } else {
+//     return a + b
+//   }
+// }
+// sum(3, 4)
 
-function sum1(a:number,b:number,c:number=0) {
-    return a+b+c
-}
-sum1(3, 4)
+// function sum1(a: number, b: number, c: number = 0) {
+//   return a + b + c
+// }
+// sum1(3, 4)

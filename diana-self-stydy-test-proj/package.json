@@ -1,8 +1,0 @@
-{
-  "scripts": {
-    "dev": "nodemon --watch src -e ts --exec ts-node src/PokerGames/index.ts"
-  },
-  "devDependencies": {
-    "@types/node": "^17.0.21"
-  }
-}
