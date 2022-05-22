@@ -1,120 +1,152 @@
-// import { sum, name } from './myMoudle'
-// console.log(name, sum(1, 2))
+interface Condition {
+  (n: number, i: number): boolean
+  // 大括号里面没有任何的成员名称的时候，表示这个大括号只是一个定界符而已
+}
 
-// const myMoudle = require('./myMoudle')
+function sum(numbers: number[], callBack: Condition): number {
+  let s = 0
+  numbers.forEach((n, i) => {
+    if (callBack(n, i)) {
+      s += n
+    }
+  })
+  return s
+}
 
-// import myMoudle from './myMoudle'
+// const result = sum([3, 4, 5, 6, 7, 8], (n) => n % 2 !== 0)//不报错  参数不能多  但是可以少
+const result = sum([3, 4, 5, 6, 7, 8], (n, i) => i % 2 !== 0)
 
-import myMoudle = require('./myMoudle')
-console.log(myMoudle)
-
-// enum Perssion {
-//   Zero = 0,
-//   Read = 1, //   2^0  0001
-//   Write = 2, //  2^1  0010
-//   Create = 4, // 2^2  0100
-//   Delete = 8, // 2^3  1000
-//   // ...
+// interface User {
+//   name?: string //?可选
+//   age: number
 // }
-// // | 位运算 ：或运算
-// let p = Perssion.Read | Perssion.Write //(0001 | 0010) = 0011
-// p = p | Perssion.Delete //(0011 | 1000) = 1011
-
-// p = p ^ Perssion.Read //(1011 ^ 0001 = 1010)
-// // & 位运算：且运算  0010 且 0001 --- 0000
-// function hasPerssion(target: Perssion, per: Perssion) {
-//   // 1010 & 0001 = 0000
-//   return (target & per) === per
+// let obj = {
+//   age: 11,
+//   newVal: 'gaga',
 // }
+// let u: User = obj //ok
 
-// console.log(hasPerssion(p, Perssion.Zero))
-// let say: string = 'hello'
-// function test(num:number):number {
-//     return num
-// }
-// test(9)
-// console.log('80900')
+// let u: User = {
+//   age: 11,
+// }//ok
 
-// let name: string | undefined ;
-// if (typeof name === 'string') {
-//     // 类型保护
-//    console.log(name.length)
-// }
+// let u: User = {
+//     age: 11,
+//     newVal:'gaga'
+// }// false
 
-// function printMeun(): void{
-//     console.log('dayin')
+// interface Duck {
+//   sound: 'gagaga'
+//   swin(): void
 // }
 
-// function throwError(msg:string):never {
-//     throw new Error(msg)
-//     // console.log('ABC');
+// let person = {
+//   name: 'kevin',
+//   age: 12,
+//   sound: 'gagaga' as 'gagaga',
+//   swin: () => {
+//     console.log('gagaga')
+//   },
 // }
 
-// let a: "A";
-// a = 'A';
+// let duck: Duck = person
 
-// let gender: "男"|"女";
-// gender = "男";
-// gender = "女";
-
-// let arr: [];//表示arr永远只是一个空数组
-
-// let user: {
-//     name: string,
-//     age: number
-// };//类型约束
-// user = {
-//     name: '',
-//     age:99
-// }
-
-// let tu: [string, number];//必须是一个数组，数组长度为2，第一个必须是字符串，第二个必须是数字；
-// tu = ['99',99]
-
-// let data: any;
-// data = '888';
-// let num: number = data; //这样就会有类型隐患
-
-// type Gender = '男' | '女'
-// type User = {
+// 假设有个函数，用于得到服务器某个接口的返回结果，是一个用户对象
+// interface response {
+//   loginID: string
 //   name: string
-//   age: string
-//   gender: Gender
+//   gender: '男' | '女'
 // }
 
-// let u: User
-
-// function getUsers(g:Gender): User[] {
-//   return []
+// // 类型别名
+// // type User = {
+// //   name: string
+// //   age: number
+// // }
+// // 接口定义
+// interface User {
+//   name: string
+//   age: number
+//   //   sayHello: () => void //是一个函数 函数没有参数 返回参数是一个void
+//   sayHello(): void //是一个函数 函数没有参数 返回参数是一个void
 // }
-/**
- * 得到a*b的结果
- * @param a
- * @param b
- */
-// function combinne(a: number, b: number): number
-// function combinne(a: string, b: string): string
 
-// function combinne(a: number | string, b: number | string): number | string{
-//     if (typeof a==='number' && typeof b==='number') {
-//         return a*b
-//     } else if (typeof a==='string' && typeof b==='string') {
-//         return a+b
+// // 接口定义和类型别名，在约束类中是存在区别的
+// // 约束对象的时候，建议使用接口的方式
+
+// let u: User = {
+//   name: 'kevin',
+//   age: 22,
+//   sayHello() {
+//     console.log('aaa')
+//   },
+// }
+
+// type Condition = (n: number) => boolean
+// interface Condition {
+//   (n: number): boolean
+//   // 大括号里面没有任何的成员名称的时候，表示这个大括号只是一个定界符而已
+// }
+
+// function sum(numbers: number[], callBack: Condition): number {
+//   let s = 0
+//   numbers.forEach((n) => {
+//     if (callBack(n)) {
+//       s += n
 //     }
-//     throw new Error('类型必须相同')
+//   })
+//   return s
 // }
-// const result = combinne(2,5)
 
-// function sum(a: number, b: number, c?: number) {
-//   if (c) {
-//     return a + b + c
-//   } else {
-//     return a + b
-//   }
-// }
-// sum(3, 4)
+// const result = sum([3, 4, 5, 6, 7, 8], (n) => n % 2 !== 0)
+// console.log(result)
 
-// function sum1(a: number, b: number, c: number = 0) {
-//   return a + b + c
+// interface A {
+//   T1: string
 // }
-// sum1(3, 4)
+// interface B {
+//   T2: number
+// }
+
+// interface C extends A, B {
+//   T3: string
+// }
+// type A = {
+//   T1: string
+// }
+// type B = {
+//   T2: number
+// }
+// type C = {
+//   T3: string
+// } & A &
+//   B
+// const obj: C = {
+//   T2: 99,
+//   T1: '99',
+//   T3: '00',
+// }
+
+// interface User {
+//   readonly id: string
+//   name: string
+//   age: number
+//   readonly arr: string[]
+// }
+
+// let U: User = {
+//   id: '5',
+//   name: 'kevin',
+//   age: 12,
+//   arr: ['00'],
+// }
+
+// U.arr.push('00')
+
+// // U.id = '99' //可以用readonly进行只读限制,这样id就不能修改了
+
+// let arr: readonly number[] = [3, 4, 5]
+
+// let arr: ReadonlyArray<number> = [3, 4, 5]
+
+// arr.push 加上了readonly  数组中改变函数，都不见了
