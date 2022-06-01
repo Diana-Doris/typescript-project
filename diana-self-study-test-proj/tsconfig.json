@@ -20,7 +20,9 @@
     // 使用es模块化交互非es模块导出
     "esModuleInterop": true,
     // 设置解析模块模式
-    "moduleResolution": "node"
+    "moduleResolution": "node",
+    // 更加严格的方式检查属性
+    "strictPropertyInitialization": true
   },
   // tsc 回车之后，编译的文件路径
   "include": ["./src"]
