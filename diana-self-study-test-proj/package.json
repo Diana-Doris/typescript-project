@@ -2,6 +2,7 @@
   "scripts": {
     "dev": "nodemon --watch src -e ts --exec ts-node src/index.ts",
     "pokerdev": "nodemon --watch src -e ts --exec ts-node src/PokerGames/index.ts",
+    "dictionarydev": "nodemon --watch src -e ts --exec ts-node src/Dictionary/index.ts",
     "blild": "rd /s /q dist & tsc"
   },
   "devDependencies": {
